@@ -12,7 +12,7 @@
 4. The program will generate `output_XdB.html` files in the project directory.
 
 ## Project Description
-This project simulates a complete wireless communication chain in C. It demonstrates:
+This project simulates a complete AWGN communication chain in C. It demonstrates:
 * **Source Coding:** Huffman Coding for compression.
 * **Channel Coding:** (3,1) Repetition Code for error correction.
 * **Modulation:** QPSK with AWGN Channel simulation.
