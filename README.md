@@ -1,8 +1,8 @@
 # Wireless Communication System Simulation
 
 ## Student Details
-* **Name:** [D Chetan Varma]
-* **ID:** [2025H1240208H]
+* **Name:** D Chetan Varma
+* **ID:** 2025H1240208H
 * **Course:** ME Communication, BITS Pilani Hyderabad
 
 ## How to Run
