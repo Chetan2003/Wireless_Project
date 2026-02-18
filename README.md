@@ -15,6 +15,7 @@
 This project simulates a complete AWGN communication chain in C. It demonstrates:
 * **Source Coding:** Huffman Coding for compression.
 * **Channel Coding:** (3,1) Repetition Code for error correction.
+* **Line Coding:** Differential Line Coding (NRZ-I).
 * **Modulation:** QPSK with AWGN Channel simulation.
 * **Visualization:** Generates HTML reports highlighting bit errors in red.
 
