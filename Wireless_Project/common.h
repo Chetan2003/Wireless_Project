@@ -5,7 +5,7 @@
 #define REPETITION_FACTOR 3  
 #define BITS_PER_CHAR 8      
 
-// --- DATA STRUCTURES ---
+
 typedef struct {
     int* bits;
     int length;

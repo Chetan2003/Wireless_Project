@@ -1,4 +1,4 @@
-#define _CRT_SECURE_NO_WARNINGS // Fixes C4996
+#define _CRT_SECURE_NO_WARNINGS 
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -48,7 +48,6 @@ int main() {
         return 1;
     }
 
-    // Fix C6386: Allocating fsize + 1 is correct, but we must check null
     char* original_text = (char*)malloc(fsize + 1);
     if (!original_text) {
         printf("Error: Memory allocation failed.\n");
@@ -82,19 +81,25 @@ int main() {
         // 2. Channel Encoder
         BitStream bits_enc = channel_encoder(bits_src);
 
-        // 3. Modulator (QPSK)
-        SignalStream sig_tx = modulator_qpsk(bits_enc);
+        //3. Line Encoder (Differential NRZ-I) ---
+        BitStream bits_line = line_encoder_differential(bits_enc);
 
-        // 4. Channel
+        // 4. Modulator (QPSK)
+        SignalStream sig_tx = modulator_qpsk(bits_line);
+
+        // 5. Channel
         SignalStream sig_rx = awgn_channel(sig_tx, current_snr);
 
-        // 5. Detector
+        // 6. Detector
         BitStream bits_det = detector(sig_rx);
 
-        // 6. Channel Decoder
-        BitStream bits_dec = channel_decoder(bits_det);
+        //7. Line Decoder (Differential NRZ-I) ---
+        BitStream bits_line_dec = line_decoder_differential(bits_det);
 
-        // 7. Huffman Decoder
+        // 8. Channel Decoder
+        BitStream bits_dec = channel_decoder(bits_line_dec);
+
+        // 9. Huffman Decoder
         char* final_text = huffman_decoder(bits_dec, huff_root);
 
         // Errors
@@ -115,6 +120,7 @@ int main() {
 
         free(bits_src.bits); free(bits_enc.bits);
         free(sig_tx.symbols); free(sig_rx.symbols);
+        free(bits_line.bits); free(bits_line_dec.bits);
         free(bits_det.bits); free(bits_dec.bits);
         free(final_text);
     }
@@ -123,6 +129,6 @@ int main() {
     free(original_text);
 
     printf("\nDone. Press Enter to exit...");
-    (void)getchar(); // Fix C6031: Cast to void to ignore return value
+    (void)getchar(); 
     return 0;
 }

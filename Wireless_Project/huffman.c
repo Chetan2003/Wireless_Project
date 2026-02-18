@@ -6,7 +6,6 @@
 
 #define MAX_TREE_HT 100
 
-// --- HELPER FUNCTIONS ---
 HuffmanNode* newNode(char data, unsigned freq) {
     HuffmanNode* temp = (HuffmanNode*)malloc(sizeof(HuffmanNode));
     if (!temp) exit(1);
@@ -134,7 +133,7 @@ BitStream huffman_encoder(char* text, long len, HuffmanNode* root) {
     for (long i = 0; i < len; i++) {
         unsigned char c = text[i];
         for (int j = 0; j < codeLen[c]; j++) {
-            // FIX FOR C6386: Explicitly check bounds
+ 
             if (bit_idx < total_bits) {
                 output.bits[bit_idx++] = codes[c][j];
             }

@@ -44,4 +44,8 @@ BitStream huffman_encoder(char* text, long len, HuffmanNode* root);
 char* huffman_decoder(BitStream input, HuffmanNode* root);
 void free_huffman_tree(HuffmanNode* root);
 
+// Line Coding Functions (Differential NRZ-I)
+BitStream line_encoder_differential(BitStream input);
+BitStream line_decoder_differential(BitStream input);
+
 #endif

@@ -28,6 +28,7 @@
     <ClCompile Include="channel_encoder.c" />
     <ClCompile Include="detector.c" />
     <ClCompile Include="huffman.c" />
+    <ClCompile Include="line_coder.c" />
     <ClCompile Include="main.c" />
     <ClCompile Include="modulator.c" />
     <ClCompile Include="source_decoder.c" />
